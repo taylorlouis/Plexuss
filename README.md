@@ -1,2 +1,7 @@
-# Plexuss
-JQuery Page
+For the algorithm of the javascript functionality for calculating the Fibonacci sequence I used a recursive function with a condition statement for checking the value of the input number.  The way that the function works it will recursively call each number and subtract the input each time until the number gets down to 2 or 1 and then return one.  If zero is inputted it will return zero.   The recursive function is enhanced in performance by having an array to store previously determined Fibonacci values so it doesn't have to repeat the same recursive calls ever again.  It will just get that recursive sum from an array of Fibonacci values.  In this instance we are using increased memory usage (memorization) to store a data structure of Fibonacci sums to offset the run time Time and Space complexities that we would otherwise have in having to rerun the same recursive operations over and over.   However, owing to the fact that JavaScript has to actually store the 'call stack' or calls to a function and their results anyway, by making fewer calls and only specifying the returned value be stored a single time in an array this should actually reduce the total memory usage in JavaScript.  (It can also help avoid getting nasty "Maximum Call Stack Exceeded Errors" as well)
+
+
+This approach also supposedly reduces the Time complexity from doing O(2^n) function calls to doing O(n) function calls.  
+I believe the Big O complexity for space usage will also be O(n) because you have to create the array of n values.
+
+I got this algorithm from http://cs.stackexchange.com/questions/13055/time-complexity-and-space-complexity-in-recursive-algorithm
