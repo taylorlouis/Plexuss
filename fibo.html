@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery Fibonacci Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script>
+            var RecurVal = [0];
+			var partRecVal = new Array();
+            var zero_num = 0, one_num = 1;
+
+            $(function(){
+                $( '#getfibonacci' ).click( function(){
+                    //define variables
+                    var num, outputfib, fib;
+			        var partRecVal = new Array();
+      
+                    //get the value from textbox
+                    var num = $( '#inputnumber' ).val();
+                    
+                    //set output div object to the variable 'outputdiv'
+                    outputfib = $( '#output' );
+                    
+                    //check if the input is not empty
+                    if (num == "" || num == null){
+                        outputfib.html( '<br>Please enter an integer' );
+                        return;
+					}	
+					else if (num in RecurVal){
+					    // call the array that has the recursive value stored previously
+					 // RecurVal[num];
+					}
+                    else {
+                        //call the recursive function to calculate the fibonacci number
+						
+					  fibolation(num);
+					  //fib = $(this).fibolation();
+                    }
+					num = Number(num);  //  Make sure to cast this because JavaScript is worse than PHP when it comes to handling type conversion
+					partRecVal = RecurVal.slice(0,num + 1);
+					fib = partRecVal.join(", ");
+					//clear the div
+					outputfib.html( '' );
+					//print the number that was entered
+					outputfib.append( '<br>For the number ' + num );
+					 //print the fibonacci value
+					outputfib.append( '<br> The Fibonacci value will be ' + fib );
+                   
+                });
+            });
+			
+
+			function fibolation(num) {
+				if (!(num in RecurVal)){
+					if (num > 2) {
+					  RecurVal[num] = fibolation(num - 2) + fibolation(num - 1);
+					//return RecurVal[num];
+					} else if (num == zero_num){             
+						RecurVal[num] = zero_num;					
+					} else {
+						RecurVal[num] = one_num;
+					}
+				}
+				return RecurVal[num];
+			}
+			
+        </script>
+    </head>
+    <body>
+        <h2>jQuery script to print Fibonacci number</h2>
+        <h3>Enter the limit:</h3>
+        <input type="text" id="inputnumber" />
+        <button id="getfibonacci" >Print Fibonacci Sum</button>
+        <!-- output fib -->
+        <h4>Output: <span id="output"></span></h4>
+    </body>
+</html>
